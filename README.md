@@ -124,6 +124,12 @@ If all goes well and there are no errors, congratulations, you have successfully
 
     cd ~/osmocom-bb/src/host/osmocon
     sudo ./osmocon -p /dev/ttyUSB0 -m c123xor ../../target/firmware/board/compal_e88/layer1.compalram.bin
+    
+Note: If you are not sure which /dev/ttyUSBX your device is connected to, you can find out using the following command:
+
+    dmesg | grep tty
+    
+If you are using Virtual Box, make sure the cable is connected to the VM by going to the *Devices > USB* menu.
 
 **2.2** *In a separate terminal window*, start the layer23 application:
 
