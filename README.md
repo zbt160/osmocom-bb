@@ -65,7 +65,7 @@ You will see the following:
 
     Press ^C now if you do NOT want to do this.
 
-***Save <YOURPATH> in a text file! You'll need this later.***
+***Save `<YOURPATH>` in a text file! You'll need this later.***
 
 Press **ENTER**.
 
@@ -73,7 +73,7 @@ Press **ENTER**.
 
     export PATH=$PATH:<YOURPATH>/install/bin
 
-***Note: replace <YOURPATH> with the path you saved earlier! If you forgot, run the script again and press CTRL+C to exit without running it.***
+***Note: replace `<YOURPATH>` with the path you saved earlier! If you forgot, run the script again and press CTRL+C to exit without running it.***
 
 **1.2.6** To check if the toolchain has been successfully added to your path, type the following in a terminal. **You need to open and close your terminal for it to show up!**
 
@@ -118,6 +118,37 @@ Comment out the block of code from line 401-410.
 
 If all goes well and there are no errors, congratulations, you have successfully obtained a working OSMOCOM firmware binary in your `osmocom-bb` folder! You do not need to `make install` since we will be running it from the command line.
 
-https://osmocom.org/projects/baseband/wiki/GnuArmToolchain
-https://osmocom.org/projects/baseband/wiki/SoftwareGettingStarted
-https://osmocom.org/projects/libosmocore/wiki/Libosmocore
+##Section 2: Making a call
+
+**2.1** Start the Layer 1 program `osmocon` to communicate with your USB port:
+
+    cd ~/osmocom-bb/src/host/osmocon
+    sudo ./osmocon -p /dev/ttyUSB0 -m c123xor ../../target/firmware/board/compal_e88/layer1.compalram.bin
+
+**2.2** *In a separate terminal window*, start the layer23 application:
+
+    cd ~/osmocom-bb/src/host/layer23/src/mobile
+    sudo ./mobile -i 127.0.0.1
+
+**2.3** *And again in a third terminal window*, issue:
+
+    telnet localhost 4247
+    
+**2.4** Send a call command through the `telnet` window:
+
+    enable
+    call 1 +92XXXXXXXXXX
+    
+Replace the last argument with your own phone number. That's it
+
+##Section 3: Errors encountered
+
+In case you have to recompile and run into errors, do it as root and not using sudo. As root, issue the following commands:
+
+     make distclean && make
+
+
+## References
+https://osmocom.org/projects/baseband/wiki/GnuArmToolchain  
+https://osmocom.org/projects/baseband/wiki/SoftwareGettingStarted  
+https://osmocom.org/projects/libosmocore/wiki/Libosmocore  
