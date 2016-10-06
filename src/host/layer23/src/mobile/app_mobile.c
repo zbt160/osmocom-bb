@@ -398,7 +398,7 @@ int l23_app_init(int (*mncc_recv)(struct osmocom_ms *ms, int, void *),
 	ms_vty_init();
 	dummy_conn.priv = NULL;
 	vty_reading = 1;
-	if (config_file != NULL) {
+/*	if (config_file != NULL) {
 		rc = vty_read_config_file(config_file, &dummy_conn);
 		if (rc < 0) {
 			fprintf(stderr, "Failed to parse the config file:"
@@ -407,7 +407,7 @@ int l23_app_init(int (*mncc_recv)(struct osmocom_ms *ms, int, void *),
 					" using: 'touch %s'\n", config_file);
 			return rc;
 		}
-	}
+	}*/
 	vty_reading = 0;
 	rc = telnet_init_dynif(l23_ctx, NULL, vty_ip, vty_port);
 	if (rc < 0)
