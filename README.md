@@ -6,7 +6,7 @@ This guide uses Debian Linux. Similar instructions will also work on Ubuntu.
 
 ##**Section 1**: Installing OSMOCOM-BB and it's dependencies.
 
-**1.1** Set up `libosmocore`.
+###**1.1** Set up `libosmocore`.
 
 libosmocore is a library with various utility functions that were originally developed as part of the OpenBSC project, but which are of a more generic nature and thus useful to (at least) other programs that we develop in the sphere of Free Software / Open Source mobile communications.
 
@@ -28,7 +28,7 @@ libosmocore is a library with various utility functions that were originally dev
     sudo make install
     sudo ldconfig -i
 
-1.2 Install the GNU ARM Toolchain
+###**1.2** Install the GNU ARM Toolchain
 
 **1.2.1** Download the build script and give it permission to run:
 
@@ -81,7 +81,7 @@ Press **ENTER**.
 
 If you see the toolchain path, it is installed.
 
-**1.3** Install OSMOCOM-BB
+###**1.3** Install OSMOCOM-BB
 
 **1.3.1** Install dependencies
 
@@ -96,9 +96,9 @@ If you see the toolchain path, it is installed.
 
 There are two files that you need to change or you'll be faced with errors later. Here are the files:
 
-Find these two lines:
-
 ***osmocom-bb\src\target\firmware\Makefile***:
+
+Find these two lines:
 
     # Uncomment this line if you want to enable Tx (Transmit) Support.
     #CFLAGS += -DCONFIG_TX_ENABLE
@@ -143,7 +143,7 @@ Replace the last argument with your own phone number. That's it
 
 ##Section 3: Errors encountered
 
-In case you have to recompile and run into errors, do it as root and not using sudo. As root, issue the following commands:
+In case you have to recompile and run into errors, do it as root (using `su`) and not using `sudo`. As root, issue the following commands:
 
      make distclean && make
 
