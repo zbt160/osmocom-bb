@@ -6,6 +6,8 @@ This guide uses Debian Linux. Similar instructions will also work on Ubuntu.
 
 ##**Section 1**: Installing OSMOCOM-BB and it's dependencies.
 
+The guide assumes that we are working in the home directory. You can create your own path and start the project in a seperate directory. 
+
 ###**1.1** Set up `libosmocore`.
 
 libosmocore is a library with various utility functions that were originally developed as part of the OpenBSC project, but which are of a more generic nature and thus useful to (at least) other programs that we develop in the sphere of Free Software / Open Source mobile communications.
